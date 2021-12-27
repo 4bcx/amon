@@ -97,7 +97,73 @@ Becomes:
 
 ### Blocks
 
+#### Paragraph blocks
+The simplest type of blocks is a paragraph block. They consists of a sequence of non-empty lines as long as none starts with anchor or list markers, or a tab character.
+
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec massa sapien faucibus et.
+
+Amet aliquam id diam maecenas ultricies mi.
+Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.
+Justo eget magna fermentum iaculis eu non diam.
+Venenatis a condimentum vitae sapien pellentesque habitant morbi.
+
+Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Ultrices mi tempus imperdiet nulla malesuada. Sit amet facilisis magna etiam tempor orci eu lobortis.
+Eget sit amet tellus cras adipiscing enim eu. Luctus accumsan tortor posuere ac.
+```
+
+Are converted to:
+
+```html
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec massa sapien faucibus et.</p>
+<p>Amet aliquam id diam maecenas ultricies mi. Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse. Justo eget magna fermentum iaculis eu non diam. Venenatis a condimentum vitae sapien pellentesque habitant morbi.</p>
+<p>Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Ultrices mi tempus imperdiet nulla malesuada. Sit amet facilisis magna etiam tempor orci eu lobortis. Eget sit amet tellus cras adipiscing enim eu. Luctus accumsan tortor posuere ac.</p>
+```
+
+#### Literal blocks
+Any block of text indented with a tab character is converted into preformatted block.
+
+```
+	Amet aliquam id diam maecenas ultricies mi.
+	Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.
+	Justo eget magna fermentum iaculis eu non diam.
+	Venenatis a condimentum vitae sapien pellentesque habitant morbi.
+```
+
+```html
+<pre>Amet aliquam id diam maecenas ultricies mi.
+Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.
+Justo eget magna fermentum iaculis eu non diam.
+Venenatis a condimentum vitae sapien pellentesque habitant morbi.</pre>
+```
+
+If a literal block started with a `$` character followed by a space, three comma separated arguments can be used to specify a programming language, filename, and starting line, like the following:
+
+```
+	$ C, hello.c, 3
+	int main(void) {
+	    printf("Hello World\n");
+	    return 0;
+	}
+```
+
+#### Quote blocks
+Quote blocks also start with one or more tab character in case of nested quotes, but must start with one of the following *also tab indented* lines:
+- `~ author, citation` to mark a quote from a book or a conversation
+- `> email/id, date/time` to mark a quote from an email or a chat message
+
 ### Inline markup
+Inline markup is parsed everywhere except inside [literal blocks](#literal-blocks)
+- `*strong*` or `st**ro**ng`
+- `/emphasis/` or `emp//ha//sis`
+- `@context` or `@[context name]`
+- `#tag` or `#[tag name]`
+- `+list` or `+[list name]`
+- `` `monospaced` `` or `` mon``ospa``ced ``
+- `https://link.com` or `(link)` or `(link)name` or `(link)[link name]`
+- `!(image)` or `!(image)[alt text, caption]`
+- `^superscript` or `^[superscript text]` or `^(link)name` or `^(link)[superscript link name]`
+- `_subscript` or `_[subscript text]` or `_(link)name` or `_(link)[subscript link name]`
 
 ### Lists
 
