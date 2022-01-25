@@ -294,9 +294,9 @@ The conditional expression `?variable_name [output text]` can be used to output 
 
 ## TODO
 - [x] Complete writing the description
+- [x] Write specification using ~~[ABNF](https://www.rfc-editor.org/rfc/rfc5234.html)~~ [ANTLR](https://www.antlr.org/)
 - [ ] Write proper specification document
-- [ ] Write specification using [ABNF](https://www.rfc-editor.org/rfc/rfc5234.html)
-- [ ] Write implementation in portable shell script
+- [ ] Write implementation ~~in portable shell script~~
 - [ ] Write compliance test documents
 
 ## Credits
